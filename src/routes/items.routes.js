@@ -9,9 +9,7 @@ const { getAllItems, getItemById, getItemDescriptionById } = require("../service
 router.get("/", async (req,res)=>{
     let query = req.query.q;
     let items =  await getAllItems(query);
-    //TODO: Mapper 
-    let itemsModel = itemsMap(items)
-    //console.log(itemModel);
+    let itemsModel = itemsMap(items)    
     res.send(itemsModel);
 });
 

@@ -1,7 +1,7 @@
 const itemsMap = (itemsResponse) =>{
    
     let items = itemsResponse.results;
-    let categories = itemsResponse.filters.length > 0 ? itemsResponse.filters[0].values[0].path_from_root : []; //TODO: mejorar si se alcanza      
+    let categories = itemsResponse.filters.length > 0 ? itemsResponse.filters[0].values[0].path_from_root : [];
     let itemModel ={
         author: {
             name: "",
@@ -22,7 +22,7 @@ const mapItem = (items) => {
             price:{
                 currency:item.currency_id,
                 amount:item.price,
-                decimals:0        //TODO: buscar de donde sale decimals   
+                decimals:0        
             },
             picture:item.thumbnail,
             condition:item.condition,

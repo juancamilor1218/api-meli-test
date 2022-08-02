@@ -12,7 +12,7 @@ const itemDetailMap = (itemDetail,description) =>{
             price:{
                 currency:itemDetail.currency_id,
                 amount:itemDetail.price,
-                decimals:0        //TODO: buscar de donde sale decimals   
+                decimals:0      
             },
             picture:itemDetail.pictures[0].url,
             condition:itemDetail.condition,
