@@ -1,3 +1,4 @@
+const currency = require("../utils/currency");
 
 
 const itemDetailMap = (itemDetail,description) =>{
@@ -12,7 +13,7 @@ const itemDetailMap = (itemDetail,description) =>{
             price:{
                 currency:itemDetail.currency_id,
                 amount:itemDetail.price,
-                decimals:0      
+                decimals:currency(itemDetail.price).decimals
             },
             picture:itemDetail.pictures[0].url,
             condition:itemDetail.condition,

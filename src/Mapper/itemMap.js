@@ -1,3 +1,5 @@
+const currency = require("../utils/currency");
+
 const itemsMap = (itemsResponse) =>{
    
     let items = itemsResponse.results;
@@ -21,8 +23,8 @@ const mapItem = (items) => {
             title:item.title,
             price:{
                 currency:item.currency_id,
-                amount:item.price,
-                decimals:0        
+                amount:currency(item.price).amountResult,
+                decimals:currency(item.price).decimals        
             },
             picture:item.thumbnail,
             condition:item.condition,
