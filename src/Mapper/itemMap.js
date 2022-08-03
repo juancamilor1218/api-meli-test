@@ -17,14 +17,15 @@ const itemsMap = (itemsResponse) =>{
 }
 
 const mapItem = (items) => {
+    let price = currency(itemDetail.price);
     return items.map((item)=>{
         let itemDto = {
             id:item.id,
             title:item.title,
             price:{
                 currency:item.currency_id,
-                amount:currency(item.price).amountResult,
-                decimals:currency(item.price).decimals        
+                amount:price.amountResult,
+                decimals:price.decimals    
             },
             picture:item.thumbnail,
             condition:item.condition,

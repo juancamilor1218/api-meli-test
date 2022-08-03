@@ -2,6 +2,7 @@ const currency = require("../utils/currency");
 
 
 const itemDetailMap = (itemDetail,description) =>{
+    let price = currency(itemDetail.price);
     let itemDto = {
         author:{
             name:"",
@@ -12,8 +13,8 @@ const itemDetailMap = (itemDetail,description) =>{
             title:itemDetail.title,
             price:{
                 currency:itemDetail.currency_id,
-                amount:itemDetail.price,
-                decimals:currency(itemDetail.price).decimals
+                amount:price.amountResult,
+                decimals:price.decimals
             },
             picture:itemDetail.pictures[0].url,
             condition:itemDetail.condition,
