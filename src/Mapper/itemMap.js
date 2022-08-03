@@ -17,8 +17,9 @@ const itemsMap = (itemsResponse) =>{
 }
 
 const mapItem = (items) => {
-    let price = currency(itemDetail.price);
+ 
     return items.map((item)=>{
+        let price = currency(item.price);
         let itemDto = {
             id:item.id,
             title:item.title,
