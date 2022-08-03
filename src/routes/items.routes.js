@@ -10,7 +10,7 @@ router.get("/", async (req,res)=>{
     let query = req.query.q;
     let response =  await getAllItems(query);
     if(response.error){
-        res.send(response);
+        res.status(500).json(response);
       
     }else{
         let itemsModel = itemsMap(response.data)    
@@ -24,12 +24,12 @@ router.get("/:id",async (req,res)=>{
     let responseDescription = null;
     
     if(responseItem.error){
-        res.send(responseItem);   
+        res.status(500).json(responseItem);   
     }
     responseDescription = await getItemDescriptionById(req.params.id);       
 
     if(responseDescription.error){   
-        res.send(responseDescription);
+        res.status(500).json(responseDescription);
     }
    
     let itemModel = itemDetailMap(responseItem.data, responseDescription.data);
