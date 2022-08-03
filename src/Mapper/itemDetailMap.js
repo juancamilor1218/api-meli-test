@@ -1,7 +1,7 @@
 const currency = require("../utils/currency");
 
 
-const itemDetailMap = (itemDetail,description) =>{
+const itemDetailMap = (itemDetail,description) =>{    
     let price = currency(itemDetail.price);
     let itemDto = {
         author:{

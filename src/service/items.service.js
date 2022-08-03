@@ -5,9 +5,9 @@ const URL_BASE = 'https://api.mercadolibre.com/'
 const getAllItems = async (query) =>{
     try{
         const res = await axios.get(`${URL_BASE}sites/MLA/search?q=${query}`);
-        return res.data ;
+        return {data:res.data , error:false};
     }catch(err){
-        console.log(err);
+        return {data:err.response.data , error:true};        
     }
    
 }
@@ -15,9 +15,9 @@ const getAllItems = async (query) =>{
 const getItemById = async (id) =>{
     try{
         const res = await axios.get(`${URL_BASE}items/${id}`);
-        return res.data ;
+        return {data:res.data , error:false};
     }catch(err){
-        console.log(err);
+        return {data:err.response.data , error:true};
     }
    
 }
@@ -25,9 +25,9 @@ const getItemById = async (id) =>{
 const getItemDescriptionById = async (id) =>{
     try{
         const res = await axios.get(`${URL_BASE}items/${id}/description`);
-        return res.data ;
+        return {data:res.data , error:false};
     }catch(err){
-        console.log(err);
+        return {data:err.response.data , error:true};
     }
    
 }

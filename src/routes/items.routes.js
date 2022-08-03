@@ -8,15 +8,31 @@ const { getAllItems, getItemById, getItemDescriptionById } = require("../service
 
 router.get("/", async (req,res)=>{
     let query = req.query.q;
-    let items =  await getAllItems(query);
-    let itemsModel = itemsMap(items)    
-    res.send(itemsModel);
+    let response =  await getAllItems(query);
+    if(response.error){
+        res.error(response);
+      
+    }else{
+        let itemsModel = itemsMap(response.data)    
+        res.send(itemsModel);
+    }
+    
 });
 
-router.get("/:id",async (req,res)=>{    
-    let item = await getItemById(req.params.id);
-    let description = await getItemDescriptionById(req.params.id);
-    let itemModel = itemDetailMap(item, description);
+router.get("/:id",async (req,res)=>{
+    let responseItem = await getItemById(req.params.id);
+    let responseDescription = null;
+    
+    if(responseItem.error){
+        res.error(responseItem);   
+    }
+    responseDescription = await getItemDescriptionById(req.params.id);       
+
+    if(responseDescription.error){
+        res.error(responseDescription);
+    }
+   
+    let itemModel = itemDetailMap(responseItem.data, responseDescription.data);
     res.send(itemModel);
 });
 
